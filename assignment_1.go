@@ -8,48 +8,46 @@ import (
 	"strings"
 )
 
-// A line of people at an amusement park ride
+type AmusementRide struct {
+	line []string
+}
 
-var line []string
+func addToEndOfLine(a *AmusementRide, person string) {
+	a.line = append(a.line, person)
+	fmt.Println(a.line)
+}
 
-func line_at_ride() {
+func removeFromLine(a *AmusementRide, person string) {
+	for i, p := range a.line {
+		match, _ := regexp.MatchString(p, strings.ToLower(person))
 
-	// CMD Line interface
+		if match {
+			a.line = append(a.line[:i], a.line[i+1:]...)
+			fmt.Println(a.line)
+		}
+	}
+}
+
+func manipulateTheLine() {
+	SpaceMountain := AmusementRide{[]string{"bill", "susan", "mary", "sam"}}
+
+	// CMD Line interface creation
 	reader := bufio.NewReader(os.Stdin)
-	line = []string{"bill", "susan", "mary", "sam"}
 
-	fmt.Println("The following people are in line", line)
+	fmt.Println("The following people are in line", SpaceMountain.line)
 	fmt.Print("Who would you like to add to the line: ")
 
 	// Input
 	text, _ := reader.ReadString('\n')
 
-	line = addToEndOfLine(text, line[:])
-	fmt.Println(line)
+	addToEndOfLine(&SpaceMountain, text)
 
 	fmt.Print("Who would you like to remove from the line? ")
 	text2, _ := reader.ReadString('\n')
 
-	line = removeFromLine(text2, line[:])
-	fmt.Println(line)
-}
-
-func addToEndOfLine(person string, line []string) []string {
-	return append(line, person)
-}
-
-func removeFromLine(person string, line []string) []string {
-	for i, p := range line {
-		match, _ := regexp.MatchString(p, strings.ToLower(person))
-
-		if match {
-			line = append(line[:i], line[i+1:]...)
-		}
-	}
-
-	return line
+	removeFromLine(&SpaceMountain, text2)
 }
 
 func main() {
-	line_at_ride()
+	manipulateTheLine()
 }

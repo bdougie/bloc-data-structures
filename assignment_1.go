@@ -9,6 +9,8 @@ import (
 	"strings"
 )
 
+// A line of people at an amusement park ride
+
 type AmusementRide struct {
 	line []string
 }
@@ -49,6 +51,8 @@ func manipulateTheLine() {
 	removeFromLine(&SpaceMountain, text2)
 }
 
+// Pixels on a computer screen
+
 type Pixel struct {
 	colors      [3]int
 	coordinates [2]int
@@ -56,6 +60,10 @@ type Pixel struct {
 
 type ComputerScreen struct {
 	pixels []Pixel
+}
+
+func addPixelToScreen(c *ComputerScreen, p Pixel) {
+	c.pixels = append(c.pixels, p)
 }
 
 func createPixel() Pixel {
@@ -70,6 +78,31 @@ func fillComputerScreen() ComputerScreen {
 	ps := []Pixel{j, k, l}
 
 	return ComputerScreen{ps}
+}
+
+// The geo-location of every person on Earth
+
+type World struct {
+	people []Person
+}
+
+type Person struct {
+	location Location
+}
+
+type Location struct {
+	lattitude float64
+	longitude float64
+}
+
+func trackSomeone() Person {
+	return Person{locate()}
+}
+
+func locate() Location {
+	return Location{
+		rand.Float64(),
+		rand.Float64()}
 }
 
 func main() {

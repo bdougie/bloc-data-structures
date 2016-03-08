@@ -10,6 +10,6 @@
 ## Test
 
 - `$ go get "github.com/stretchr/testify/assert"`
-- `cd intro_to_data_structures` # You can cd into each directory to run
+- `cd intro_to_data_structures` You can cd into each directory to run
 tests separately
 - `$ go test`

@@ -2,6 +2,9 @@ package main
 
 import ()
 
+// Stack
+//
+
 type Stack struct {
 	top  *Element
 	size int
@@ -37,6 +40,9 @@ func (s *Stack) Pop() interface{} {
 
 	return nil
 }
+
+// Queue
+//
 
 type Queue struct {
 	top  *Element
@@ -74,6 +80,9 @@ func (q *Queue) Dequeue() interface{} {
 	return nil
 }
 
+// StackQueue
+//
+
 type StackQueue struct {
 	inbox  *Stack
 	outbox *Stack
@@ -105,31 +114,30 @@ func (q *StackQueue) Dequeue() interface{} {
 	return nil
 }
 
-// type QueueStack struct {
-// 	inbox  *Queue
-// 	outbox *Queue
-// }
+// QueueStack
+//
 
-// func (s *StackQueue) IsEmpty() bool {
-// 	if s.inbox.IsEmpty() && s.outbox.IsEmpty() {
-// 		return true
-// 	}
+type QueueStack struct {
+	inbox  *Queue
+	outbox *Queue
+}
 
-// 	return false
-// }
+func (s *QueueStack) IsEmpty() bool {
+	if s.inbox.IsEmpty() && s.outbox.IsEmpty() {
+		return true
+	}
 
-// func (s *Queue) Push(value interface{}) {
-// 	s.top = &Element{value: value, stack: s, next: s.top}
-// 	s.size++
-// }
+	return false
+}
 
-// func (s *StackQueue Pop() interface{} {
-// 	if s.size > 0 {
-// 		value := s.top.value
-// 		s.top = s.top.next
-// 		s.size--
-// 		return value
-// 	}
+func (s *QueueStack) Push(value interface{}) {
+	s.inbox.Enqueue(value)
+}
 
-// 	return nil
-// }
+func (s *QueueStack) Pop() interface{} {
+	if !s.IsEmpty() {
+		s.outbox.Enqueue(s.inbox.Dequeue())
+	}
+
+	return nil
+}

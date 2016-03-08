@@ -105,3 +105,29 @@ func TestStackQueuePopulatesOutboxWhenOutBoxIsEmpty(t *testing.T) {
 	outboxValue := q.outbox.top.value
 	assert.Equal(t, "another thing", outboxValue)
 }
+
+func TestQueueStackIsEmpty(t *testing.T) {
+	one := new(Queue)
+	two := new(Queue)
+	s := QueueStack{one, two}
+	assert.Equal(t, true, s.IsEmpty())
+}
+
+func TestQueueStackCanPush(t *testing.T) {
+	inbox := new(Queue)
+	outbox := new(Queue)
+	s := QueueStack{inbox, outbox}
+	s.Push("YO")
+	assert.Equal(t, false, s.inbox.IsEmpty())
+}
+
+func TestQueueStackCanPop(t *testing.T) {
+	inbox := new(Queue)
+	outbox := new(Queue)
+	s := QueueStack{inbox, outbox}
+	s.Push("YO")
+	s.Push("YO")
+	s.Pop()
+	outboxValue := s.outbox.top.value
+	assert.Equal(t, "YO", outboxValue)
+}

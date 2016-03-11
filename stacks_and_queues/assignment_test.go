@@ -80,30 +80,30 @@ func TestStackQueueCanEnqueue(t *testing.T) {
 	two := new(Stack)
 	q := StackQueue{one, two}
 	q.Enqueue("stuff")
-	inboxValue := q.inbox.top.value
-	assert.Equal(t, "stuff", inboxValue)
+	alphaValue := q.alpha.top.value
+	assert.Equal(t, "stuff", alphaValue)
 }
 
-func TestStackQueueCanDequeueAndMaintainTheStackLIFO(t *testing.T) {
+func TestStackQueueCanDequeueAndMaintainTheStackFIFO(t *testing.T) {
 	one := new(Stack)
 	two := new(Stack)
 	q := StackQueue{one, two}
 	q.Enqueue("stuff")
 	q.Enqueue("more stuff")
 	q.Dequeue()
-	inboxValue := q.inbox.top.value
-	assert.Equal(t, "stuff", inboxValue)
+	alphaValue := q.alpha.top.value
+	assert.Equal(t, "more stuff", alphaValue)
 }
 
-func TestStackQueuePopulatesOutboxWhenOutBoxIsEmpty(t *testing.T) {
+func TestStackQueueCanPop(t *testing.T) {
 	in := new(Stack)
 	out := new(Stack)
 	q := StackQueue{in, out}
 	q.Enqueue("a thing")
 	q.Enqueue("another thing")
 	q.Dequeue()
-	outboxValue := q.outbox.top.value
-	assert.Equal(t, "another thing", outboxValue)
+	alphaSize := q.beta.size
+	assert.Equal(t, 1, alphaSize)
 }
 
 func TestQueueStackIsEmpty(t *testing.T) {
@@ -114,20 +114,22 @@ func TestQueueStackIsEmpty(t *testing.T) {
 }
 
 func TestQueueStackCanPush(t *testing.T) {
-	inbox := new(Queue)
-	outbox := new(Queue)
-	s := QueueStack{inbox, outbox}
+	alpha := new(Queue)
+	beta := new(Queue)
+	s := QueueStack{alpha, beta}
 	s.Push("YO")
-	assert.Equal(t, false, s.inbox.IsEmpty())
+	s.Push("YO")
+	alphaSize := s.alpha.size
+	assert.Equal(t, 2, alphaSize)
 }
 
 func TestQueueStackCanPop(t *testing.T) {
-	inbox := new(Queue)
-	outbox := new(Queue)
-	s := QueueStack{inbox, outbox}
-	s.Push("YO")
-	s.Push("YO")
+	alpha := new(Queue)
+	beta := new(Queue)
+	s := QueueStack{alpha, beta}
+	s.Push("12")
+	s.Push("3")
 	s.Pop()
-	outboxValue := s.outbox.top.value
-	assert.Equal(t, "YO", outboxValue)
+	alphaSize := s.alpha.size
+	assert.Equal(t, 1, alphaSize)
 }

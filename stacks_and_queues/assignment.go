@@ -97,17 +97,22 @@ func (q *StackQueue) IsEmpty() bool {
 }
 
 func (q *StackQueue) Enqueue(value interface{}) {
-	q.alpha.Push(value)
-}
-
-func (q *StackQueue) resetInbox() {
-	for q.alpha.IsEmpty() {
+	// move all items to beta
+	if !q.alpha.IsEmpty() {
 		q.beta.Push(q.alpha.Pop())
+	}
+
+	// push new value to aplha
+	q.alpha.Push(value)
+
+	// move all items back from beta to alpha
+	if !q.beta.IsEmpty() {
+		q.alpha.Push(q.beta.Pop())
 	}
 }
 
 func (q *StackQueue) Dequeue() interface{} {
-	if !q.IsEmpty() {
+	if !q.alpha.IsEmpty() {
 		q.beta.Push(q.alpha.Pop())
 	}
 
@@ -118,12 +123,12 @@ func (q *StackQueue) Dequeue() interface{} {
 //
 
 type QueueStack struct {
-	inbox  *Queue
-	outbox *Queue
+	alpha *Queue
+	beta  *Queue
 }
 
 func (s *QueueStack) IsEmpty() bool {
-	if s.inbox.IsEmpty() && s.outbox.IsEmpty() {
+	if s.alpha.IsEmpty() && s.beta.IsEmpty() {
 		return true
 	}
 
@@ -131,13 +136,24 @@ func (s *QueueStack) IsEmpty() bool {
 }
 
 func (s *QueueStack) Push(value interface{}) {
-	s.inbox.Enqueue(value)
+	s.alpha.Enqueue(value)
 }
 
 func (s *QueueStack) Pop() interface{} {
-	if !s.IsEmpty() {
-		s.outbox.Enqueue(s.inbox.Dequeue())
+	// dequeue all elements to the beta queue
+	if s.alpha.size > 1 {
+		s.alpha.Enqueue(s.alpha.Dequeue())
 	}
 
-	return nil
+	// remove the remaining element
+	s.alpha.Dequeue()
+
+	// dequeue beta back to alpha
+	s.alpha.Enqueue(s.beta.Dequeue())
+
+	if s.IsEmpty() {
+		return nil
+	}
+
+	return s.alpha.Dequeue()
 }

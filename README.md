@@ -2,9 +2,11 @@
 
 These are exercises from the Bloc [Software Engineering Principles](https://www.bloc.io/software-engineering-track)
 
-## Why GO
+## Why GO?
 
 The course itself is pretty much language agnostic, but provides recommendations to use Ruby, however being a Rubyist for the past 2 years, I am looking for a bit more of a challenge and have opted to use [Golang](https://golang.org/) for the exercises. 
+
+### Tests
 
 While going through these exercises in DataStructures, I will be writing Unit Tests for everything to ensure I understand and can prove these my solutions work. I am going through this course unguided and without a mentor and hope to leverage the GO community if I come across any limitations(there most likely will not) in my choice for this language.
 

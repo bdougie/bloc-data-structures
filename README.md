@@ -1,4 +1,4 @@
-# Bloc Software Engineering Principles
+# Data Structures
 
 These are exercises from the Bloc [Software Engineering Principles](https://www.bloc.io/software-engineering-track)
 

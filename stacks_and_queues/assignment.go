@@ -84,12 +84,12 @@ func (q *Queue) Dequeue() interface{} {
 //
 
 type StackQueue struct {
-	inbox  *Stack
-	outbox *Stack
+	alpha *Stack
+	beta  *Stack
 }
 
 func (q *StackQueue) IsEmpty() bool {
-	if q.inbox.IsEmpty() && q.outbox.IsEmpty() {
+	if q.alpha.IsEmpty() && q.beta.IsEmpty() {
 		return true
 	}
 
@@ -97,18 +97,18 @@ func (q *StackQueue) IsEmpty() bool {
 }
 
 func (q *StackQueue) Enqueue(value interface{}) {
-	q.inbox.Push(value)
+	q.alpha.Push(value)
 }
 
 func (q *StackQueue) resetInbox() {
-	for q.inbox.IsEmpty() {
-		q.outbox.Push(q.inbox.Pop())
+	for q.alpha.IsEmpty() {
+		q.beta.Push(q.alpha.Pop())
 	}
 }
 
 func (q *StackQueue) Dequeue() interface{} {
 	if !q.IsEmpty() {
-		q.outbox.Push(q.inbox.Pop())
+		q.beta.Push(q.alpha.Pop())
 	}
 
 	return nil

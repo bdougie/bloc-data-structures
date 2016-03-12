@@ -1,7 +1,7 @@
 ## How does your data structure allow developers to access and manipulate the data?
 
-With `AmusementRide` Struct I am able to add names to the end of the lin using the `:addToEndOfLine` function, which uses the [Slice](http://blog.golang.org/go-slices-usage-and-internals) `:append` function to literally add to the end of the line array.
-The only manipulation of the line available to a user is `:removeFromLine` and that is a standard loop and match using a regular expression library. The Go Standard library does not have a delete function for arrays, so I am using a Slice operator to append the line after the point where name(string) matched. 
+With `AmusementRide` Struct I am able to add names to the end of the lin using the `#addToEndOfLine` function, which uses the [Slice](http://blog.golang.org/go-slices-usage-and-internals) `#append` function to literally add to the end of the line array.
+The only manipulation of the line available to a user is `#removeFromLine` and that is a standard loop and match using a regular expression library. The Go Standard library does not have a delete function for arrays, so I am using a Slice operator to append the line after the point where name(string) matched. 
 
 ## If a developer wanted to find a specific element in your data structure, how would you search for it?
 

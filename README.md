@@ -1,4 +1,18 @@
-# bloc-data-structures
+# Data Structures
+
+These are exercises from the Bloc [Software Engineering Principles](https://www.bloc.io/software-engineering-track)
+
+## Why GO?
+
+The course itself is pretty much language agnostic, but provides recommendations to use Ruby, however being a Rubyist for the past 2 years, I am looking for a bit more of a challenge and have opted to use [Golang](https://golang.org/) for the exercises. 
+
+### Tests
+
+While going through these exercises in DataStructures, I will be writing Unit Tests for everything to ensure I understand and can prove these my solutions work. I am going through this course unguided and without a mentor and hope to leverage the GO community if I come across any limitations(there most likely will not) in my choice for this language.
+
+## Completed Exercises
+- [Intro to Data Structures](https://github.com/bdougie/bloc-data-structures/tree/master/intro_to_data_structures)
+- [Stacks and Queues](https://github.com/bdougie/bloc-data-structures/tree/master/stacks_and_queues)
 
 ## Setup
 

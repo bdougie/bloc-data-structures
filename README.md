@@ -13,6 +13,7 @@ While going through these exercises in DataStructures, I will be writing Unit Te
 ## Completed Exercises
 - [Intro to Data Structures](https://github.com/bdougie/bloc-data-structures/tree/master/intro_to_data_structures)
 - [Stacks and Queues](https://github.com/bdougie/bloc-data-structures/tree/master/stacks_and_queues)
+- [Linked List](https://github.com/bdougie/bloc-data-structures/tree/master/linked_lists)
 
 ## Setup
 

@@ -20,7 +20,7 @@ While going through these exercises in DataStructures, I will be writing Unit Te
 - install GO 1.6 from [source](https://golang.org/dl/)
 - set up your [$GOPATH](https://www.kajabinext.com/marketplace/courses/1222)
 - clone repo to your $GOPATH
-- run `$ go run bloc_datastructures/assignment.go`
+- run `$ go run bloc_datastructures/intro_to_data_structures/assignment.go`
 
 ## Test
 

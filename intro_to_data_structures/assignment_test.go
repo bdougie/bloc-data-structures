@@ -9,7 +9,9 @@ import (
 
 func TestInitializationOfLine(t *testing.T) {
 	SpaceMountain := AmusementRide{[]string{"bill", "susan", "mary", "sam"}}
-	assert.Equal(t, len(SpaceMountain.line), 4)
+	if length := len(SpaceMountain.line); length != 4 {
+		t.Errorf("Expected line length of 4, but it was %d instead.", length)
+	}
 }
 
 func TestAddingToLine(t *testing.T) {
@@ -23,7 +25,9 @@ func TestRemovingFromLine(t *testing.T) {
 	SpaceMountain := AmusementRide{[]string{"bill", "susan", "mary", "sam"}}
 	removeFromLine(&SpaceMountain, "sam")
 
-	assert.Equal(t, len(SpaceMountain.line), 3)
+	if length := len(SpaceMountain.line); length != 3 {
+		t.Errorf("Expected line length of 3, but it was %d instead.", length)
+	}
 }
 
 // Pixels on a computer screen
@@ -42,10 +46,17 @@ func TestComputerScreenInitHasPixels(t *testing.T) {
 
 func TestPixelIsAddedToTheScreen(t *testing.T) {
 	c := fillComputerScreen()
-	assert.Equal(t, len(c.pixels), 3)
+	length := len(c.pixels)
+
+	if length != 3 {
+		t.Errorf("Expected pixel length of 3, but it was %d instead.", length)
+	}
 
 	addPixelToScreen(&c, createPixel())
-	assert.Equal(t, len(c.pixels), 4)
+
+	if length != 3 {
+		t.Errorf("Expected pixel length of 4, but it was %d instead.", length)
+	}
 }
 
 // The geo-location of every person on Earth

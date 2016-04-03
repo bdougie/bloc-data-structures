@@ -25,6 +25,14 @@ While going through these exercises in DataStructures, I will be writing Unit Te
 ## Test
 
 - `$ go get "github.com/stretchr/testify/assert"`
+- `$go test ./...`
+
+If you want to run the test separately:
+
 - `cd intro_to_data_structures` You can cd into each directory to run
 tests separately
 - `$ go test`
+
+If you want to run a single test:
+
+- `$ go test -v -run=TestPixelIsAddedToTheScreen`

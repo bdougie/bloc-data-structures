@@ -14,6 +14,8 @@ While going through these exercises in DataStructures, I will be writing Unit Te
 - [Intro to Data Structures](https://github.com/bdougie/bloc-data-structures/tree/master/intro_to_data_structures)
 - [Stacks and Queues](https://github.com/bdougie/bloc-data-structures/tree/master/stacks_and_queues)
 - [Linked List](https://github.com/bdougie/bloc-data-structures/tree/master/linked_lists)
+- [Hashes](https://github.com/bdougie/bloc-data-structures/tree/master/hashes_1)
+- [Binary Trees](https://github.com/bdougie/bloc-data-structures/tree/master/binary_trees)
 
 ## Setup
 

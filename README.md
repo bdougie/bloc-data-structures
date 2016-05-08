@@ -27,7 +27,7 @@ While going through these exercises in DataStructures, I will be writing Unit Te
 ## Test
 
 - `$ go get "github.com/stretchr/testify/assert"`
-- `$go test ./...`
+- `$ go test ./...`
 
 If you want to run the test separately:
 

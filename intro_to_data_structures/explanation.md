@@ -10,6 +10,6 @@ I did not write a specific function to do that, but they can loop over the line 
 ## What other real-world data can each structure represent?
 Train, Planes, and Automobiles ¯\_(ツ)_/¯
 
-## Dicoveries in GO
+## Discoveries in GO
 
 I found out very quickly the choice for GO increase my potential for learning. This is because I had clear limitations with the Standard Library and had to hand build things I would normally take for granted in Ruby or JavaScript.  
